@@ -10,9 +10,9 @@ session_start();
 	$mailSub = "Success confirming your address!";
 	$mailBody = "this is a test";
 	$mailFrom = "From:mail@forceless.jp";
-	$mySQLhost ='mysql***.db.sakura.ne.jp'; /*ask me*/
-	$mySQLuser ='***';/*ask me*/
-	$mySQLpw ='***';/*ask me*/
+	$mySQLhost ='mysql409.db.sakura.ne.jp';
+	$mySQLuser ='forceless';
+	$mySQLpw ='nekorin1048';
 
 
 
