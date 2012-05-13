@@ -21,6 +21,7 @@ session_start();
 
 
 $address = "";
+$accountID="";
 
 
 //print "userID:".$_SESSION['userID'];
@@ -59,6 +60,7 @@ while ($row = mysql_fetch_assoc($result)) {
 	*/
 	if(!strcmp($_SESSION['userID'],$row['userID'])){
 		$address =$row['address'];
+		$accountID=$row['accountID'];
 		$same=true;
 		break;
 	}
@@ -75,11 +77,16 @@ if($same==true){
 		///some controls
 		$sql = 'UPDATE Account SET validFlag=1 WHERE userID="'.$_SESSION["userID"].'"';
 			if(mysql_query($sql)){
+				$sql = "INSERT INTO AccountData (accountID,HP,Twitter,facebook,renewDate) VALUES ('".$accountID."','','','',".mktime().")";
+				if(mysql_query($sql)){
 			
-				if (mail($address, $mailSub,$mailBody,$mailFrom)) {
- 					 print('success');
-				} else {
-					 print "error@mail";
+					if (mail($address, $mailSub,$mailBody,$mailFrom)) {
+ 						 print('success');
+					} else {
+						 print "error@mail";
+					}
+				}else{
+					 print "error@AccountData";
 				}
 				
 			
